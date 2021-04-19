@@ -48,7 +48,7 @@ RUN mkdir /etc/julia && \
 
 USER $NB_UID
 
-RUN julia -e 'import Pkg; Pkg.update(); Pkg.add("FFTW"); Pkg.add("GZip"); Pkg.add("PyPlot"); Pkg.clone("https://github.com/zelenkastiot/Unwrap.jl"); Pkg.precompile();' && \
+RUN julia -e 'import Pkg; Pkg.update(); Pkg.add("FFTW"); Pkg.add("GZip"); Pkg.add("PyPlot"); Pkg.precompile();' && \
     (test $TEST_ONLY_BUILD || julia -e 'import Pkg; Pkg.add("HDF5")') && \
     julia -e "using Pkg; pkg\"add IJulia\"; pkg\"precompile\"" && \
     julia -e "using Pkg; pkg\"add LsqFit\"; pkg\"precompile\"" && \
