@@ -77,7 +77,8 @@ USER $NB_UID
 RUN julia -e 'import Pkg; Pkg.update(); Pkg.add("FFTW"); Pkg.add("GZip"); Pkg.add("PyPlot"); Pkg.precompile();' && \
     (test $TEST_ONLY_BUILD || julia -e 'import Pkg; Pkg.add("HDF5")') && \
     julia -e "using Pkg; pkg\"add IJulia\"; pkg\"precompile\"" && \
-	julia -e "using Pkg; pkg\"add LsqFit\"; pkg\"precompile\"" && \
+    julia -e "using Pkg; pkg\"add LsqFit\"; pkg\"precompile\"" && \
+    julia -e "using Pkg; Pkg.clone("https://github.com/zelenkastiot/Unwrap.jl")" && \
     # move kernelspec out of home \
     mv "${HOME}/.local/share/jupyter/kernels/julia"* "${CONDA_DIR}/share/jupyter/kernels/" && \
     chmod -R go+rx "${CONDA_DIR}/share/jupyter" && \
