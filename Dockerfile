@@ -78,7 +78,6 @@ RUN julia -e 'import Pkg; Pkg.update(); Pkg.add("FFTW"); Pkg.add("GZip"); Pkg.ad
     (test $TEST_ONLY_BUILD || julia -e 'import Pkg; Pkg.add("HDF5")') && \
     julia -e "using Pkg; pkg\"add IJulia\"; pkg\"precompile\"" && \
 	julia -e "using Pkg; pkg\"add LsqFit\"; pkg\"precompile\"" && \
-	julia -e "using Pkg; pkg"add https://github.com/platawiec/Unwrap.jl" pkg\"precompile\"" && \
     # move kernelspec out of home \
     mv "${HOME}/.local/share/jupyter/kernels/julia"* "${CONDA_DIR}/share/jupyter/kernels/" && \
     chmod -R go+rx "${CONDA_DIR}/share/jupyter" && \
