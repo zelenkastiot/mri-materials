@@ -48,31 +48,31 @@ RUN mkdir /etc/julia && \
 
 USER $NB_UID
 
-# R packages including IRKernel which gets installed globally.
-RUN conda install --quiet --yes \
-    'r-base=3.6.3' \
-    'r-caret=6.0*' \
-    'r-crayon=1.3*' \
-    'r-devtools=2.3*' \
-    'r-forecast=8.12*' \
-    'r-hexbin=1.28*' \
-    'r-htmltools=0.4*' \
-    'r-htmlwidgets=1.5*' \
-    'r-irkernel=1.1*' \
-    'r-nycflights13=1.0*' \
-    'r-plyr=1.8*' \
-    'r-randomforest=4.6*' \
-    'r-rcurl=1.98*' \
-    'r-reshape2=1.4*' \
-    'r-rmarkdown=2.1*' \
-    'r-rsqlite=2.2*' \
-    'r-shiny=1.4*' \
-    'r-tidyverse=1.3*' \
-    'rpy2=3.1*' \
-    && \
-    conda clean --all -f -y && \
-    fix-permissions "${CONDA_DIR}" && \
-    fix-permissions "/home/${NB_USER}"
+# # R packages including IRKernel which gets installed globally.
+# RUN conda install --quiet --yes \
+#     'r-base=3.6.3' \
+#     'r-caret=6.0*' \
+#     'r-crayon=1.3*' \
+#     'r-devtools=2.3*' \
+#     'r-forecast=8.12*' \
+#     'r-hexbin=1.28*' \
+#     'r-htmltools=0.4*' \
+#     'r-htmlwidgets=1.5*' \
+#     'r-irkernel=1.1*' \
+#     'r-nycflights13=1.0*' \
+#     'r-plyr=1.8*' \
+#     'r-randomforest=4.6*' \
+#     'r-rcurl=1.98*' \
+#     'r-reshape2=1.4*' \
+#     'r-rmarkdown=2.1*' \
+#     'r-rsqlite=2.2*' \
+#     'r-shiny=1.4*' \
+#     'r-tidyverse=1.3*' \
+#     'rpy2=3.1*' \
+#     && \
+#     conda clean --all -f -y && \
+#     fix-permissions "${CONDA_DIR}" && \
+#     fix-permissions "/home/${NB_USER}"
 
 RUN julia -e 'import Pkg; Pkg.update(); Pkg.add("FFTW"); Pkg.add("GZip"); Pkg.add("PyPlot"); Pkg.precompile();' && \
     (test $TEST_ONLY_BUILD || julia -e 'import Pkg; Pkg.add("HDF5")') && \
@@ -139,10 +139,10 @@ RUN cd $HOME/work;\
                 nbconvert; \
     python -m sos_notebook.install; \
     jupyter labextension install --minimize=False jupyterlab-sos; \
-    git clone https://github.com/zelenkastiot/Phase_book.git; \
-    cd Phase_book;\
-    chmod -R 777 $HOME/work/Phase_book
+    git clone https://github.com/zelenkastiot/mri-materials.git; \
+    cd mri-materials;\
+    chmod -R 777 $HOME/work/mri-materials
     
-WORKDIR $HOME/work/Phase_book
+WORKDIR $HOME/work/mri-materials
 
 USER $NB_UID
