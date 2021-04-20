@@ -1,6 +1,6 @@
 # Docker image for MRI online course
 
-<summary> <b>🐳 Running with Docker </b> </font> </summary><br>
+<b>🐳 Running with Docker </b> </font> <br>
 
 If you have Docker installed on your computer and running, you can run the code 
 in the same environment described in this repository using `repo2docker`. 
