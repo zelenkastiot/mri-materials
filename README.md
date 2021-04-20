@@ -1,4 +1,4 @@
-# mri-materils
+# mri-materials
 
 <font> <b> 🐳 Docker image </b> </font> 
 
