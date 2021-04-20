@@ -1,5 +1,11 @@
-# 🐳 Docker image for MRI course
-Julia (1.4.1) | Python (3.7)
+# mri-materils
+
+<font> <b> 🐳 Docker image </b> </font> 
+
+- **Julia** (1.4.1) 
+  - FFTW, PyPlot, HDF5, LsqFit, GZip
+- **Python** (3.7)
+  - SoS(py3+julia), scipy , plotly 
 
 <font> <b> 📕 Course chapters </b> </font> 
 
@@ -31,5 +37,3 @@ Alternatively, you can start a Binder session by clicking the badge below:
 
 [![badge](https://raw.githubusercontent.com/Notebook-Factory/mri-course/8e3a28f4f0c9c32ee2f2b9df0055271ebcb91a9b/images/MRI-online.svg)](https://mybinder.org/v2/gh/zelenkastiot/mri-materials/HEAD)
 
----
-</details>
